@@ -1,4 +1,4 @@
-package src.pl.enums;
+package src.pl.model.enums;
 
 public enum TypeOfApartament {
     ROOM("pokój"),
