@@ -1,4 +1,4 @@
 package src.pl.model;
 
-public class Platnosc {
+public class Client {
 }
