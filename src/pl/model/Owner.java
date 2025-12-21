@@ -12,4 +12,12 @@ public class Owner {
         this.surname = surname;
         this.rentalOffers = rentalOffers;
     }
+
+    public void addApartament(Apartament apartament) {
+        rentalOffers.add(apartament);
+    }
+
+    public List<Apartament> getApartaments() {
+        return rentalOffers;
+    }
 }
