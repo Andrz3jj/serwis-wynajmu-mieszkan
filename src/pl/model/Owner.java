@@ -13,11 +13,25 @@ public class Owner {
         this.rentalOffers = rentalOffers;
     }
 
+    public Owner(String name, String surname) {
+        this.name = name;
+        this.surname = surname;
+    }
+
     public void addApartament(Apartament apartament) {
         rentalOffers.add(apartament);
     }
 
     public List<Apartament> getApartaments() {
         return rentalOffers;
+    }
+
+    @Override
+    public String toString() {
+        return "Owner{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", rentalOffers=" + rentalOffers +
+                '}';
     }
 }

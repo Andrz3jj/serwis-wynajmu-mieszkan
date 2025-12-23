@@ -2,15 +2,16 @@ package src.pl.model;
 
 import src.pl.model.enums.TypeOfApartament;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class RentalService {
     Scanner sc = new Scanner(System.in);
 
-    private List<Apartament> apartaments;
-    private List<Reservation> reservations;
-    private List<Owner> owners;
+    private List<Apartament> apartaments = new ArrayList<>();
+    private List<Reservation> reservations = new ArrayList<>();
+    private List<Owner> owners = new ArrayList<>();
 
     public void addApartament() {
         if (owners.isEmpty()) {
@@ -65,6 +66,10 @@ public class RentalService {
         System.out.println("Dodano nowe mieszkanie: " + apartament);
     }
 
+    public void showApartaments() {
+
+    }
+
     public List<Apartament> getApartaments() {
         return apartaments;
     }
@@ -73,8 +78,18 @@ public class RentalService {
         return owners;
     }
 
-    public void addOwner(Owner owner) {
+    public void addOwner() {
+        System.out.printf("Podaj imię właściciela\n>> ");
+        String name = sc.nextLine();
+
+        System.out.printf("Podaj nazwisko nauczyciela\n>> ");
+        String surname = sc.nextLine();
+
+        Owner owner = new Owner(name, surname);
+
         owners.add(owner);
+
+        System.out.println("Dodano nowego właściciela: " + owner);
     }
 
 }
