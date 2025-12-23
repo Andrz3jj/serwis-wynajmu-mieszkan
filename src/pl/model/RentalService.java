@@ -1,5 +1,6 @@
 package src.pl.model;
 
+import src.pl.model.enums.ApartamentStatus;
 import src.pl.model.enums.TypeOfApartament;
 
 import java.util.ArrayList;
@@ -66,8 +67,52 @@ public class RentalService {
         System.out.println("Dodano nowe mieszkanie: " + apartament);
     }
 
-    public void showApartaments() {
+    public void showOwnerApartaments() {
+        if (owners.isEmpty()) {
+            System.out.println("Brak właścicieli.");
+            return;
+        }
 
+        System.out.println("Wybierz właściciela:");
+        for (int i = 0; i < owners.size(); i++) {
+            System.out.println((i + 1) + " -> " + owners.get(i));
+        }
+        System.out.print(">> ");
+        int ownerIndex = sc.nextInt();
+        sc.nextLine();
+
+        if (ownerIndex < 1 || ownerIndex > owners.size()) {
+            System.out.println("Nieprawidłowy numer właściciela.");
+            return;
+        }
+
+        Owner owner = owners.get(ownerIndex - 1);
+        List<Apartament> ownerApartaments = owner.getApartaments();
+
+        if (ownerApartaments.isEmpty()) {
+            System.out.println("Ten właściciel nie ma żadnych mieszkań.");
+            return;
+        }
+
+        System.out.println("Mieszkania właściciela " + owner + ":");
+        for (int i = 0; i < ownerApartaments.size(); i++) {
+            System.out.println((i + 1) + " -> " + ownerApartaments.get(i));
+        }
+    }
+
+    public void showClientApartaments() {
+        boolean anyApartamentAvaiable = false;
+
+        for (Apartament a: apartaments) {
+            if (a.getStatus() == ApartamentStatus.AVAILABLE) {
+                System.out.println(a);
+                anyApartamentAvaiable = true;
+            }
+        }
+
+        if (!anyApartamentAvaiable) {
+            System.out.println("Brak dostępnych mieszkań");
+        }
     }
 
     public List<Apartament> getApartaments() {

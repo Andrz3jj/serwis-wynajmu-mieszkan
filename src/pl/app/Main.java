@@ -55,7 +55,7 @@ public class Main {
 
             if (role == UserRole.OWNER) {
                 switch (numberOfOption) {
-                    case 1 -> System.out.println("1");
+                    case 1 -> rentalService.showOwnerApartaments();
                     case 2 -> System.out.println("2");
                     case 3 -> System.out.println("3");
                     case 4 -> rentalService.addOwner();
@@ -67,7 +67,7 @@ public class Main {
                 }
             } else {
                 switch (numberOfOption) {
-                    case 1 -> System.out.println("1");
+                    case 1 -> rentalService.showClientApartaments();
                     case 2 -> System.out.println("2");
                     case 3 -> System.out.println("3");
                     case 4 -> {
