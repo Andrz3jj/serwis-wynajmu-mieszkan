@@ -6,6 +6,7 @@ import src.pl.model.enums.TypeOfApartament;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.time.LocalDate;
 
 public class RentalService {
     Scanner sc = new Scanner(System.in);
@@ -13,6 +14,7 @@ public class RentalService {
     private List<Apartament> apartaments = new ArrayList<>();
     private List<Reservation> reservations = new ArrayList<>();
     private List<Owner> owners = new ArrayList<>();
+    private List<Client> clients = new ArrayList<>();
 
     public void addApartament() {
         if (owners.isEmpty()) {
@@ -135,6 +137,90 @@ public class RentalService {
         owners.add(owner);
 
         System.out.println("Dodano nowego właściciela: " + owner);
+    }
+
+    public void addClient() {
+        System.out.printf("Podaj imię klienta\n>> ");
+        String name = sc.nextLine();
+
+        System.out.printf("Podaj nazwisko klienta\n>> ");
+        String surname = sc.nextLine();
+
+        Client client = new Client(name, surname);
+        clients.add(client);
+
+        System.out.println("Dodano nowego klienta: " + client);
+    }
+
+    public void makeReservation() {
+        if (clients.isEmpty()) {
+            System.out.println("Brak klientów. Najpierw dodaj klienta.");
+            return;
+        }
+        if (apartaments.isEmpty()) {
+            System.out.println("Brak mieszkań do rezerwacji.");
+            return;
+        }
+
+        System.out.println("Wybierz klienta:");
+        for (int i = 0; i < clients.size(); i++) {
+            System.out.println((i + 1) + " -> " + clients.get(i));
+        }
+        System.out.print(">> ");
+        int clientIndex = sc.nextInt();
+        sc.nextLine();
+
+        if (clientIndex < 1 || clientIndex > clients.size()) {
+            System.out.println("Nieprawidłowy numer klienta.");
+            return;
+        }
+        Client client = clients.get(clientIndex - 1);
+
+        System.out.println("Wybierz mieszkanie do rezerwacji:");
+        for (int i = 0; i < apartaments.size(); i++) {
+            System.out.println((i + 1) + " -> " + apartaments.get(i));
+        }
+        System.out.print(">> ");
+        int aptIndex = sc.nextInt();
+        sc.nextLine();
+
+        if (aptIndex < 1 || aptIndex > apartaments.size()) {
+            System.out.println("Nieprawidłowy numer mieszkania.");
+            return;
+        }
+        Apartament apartament = apartaments.get(aptIndex - 1);
+
+        System.out.println("Podaj datę rozpoczęcia (rrrr-MM-dd)\n>> ");
+        String startStr = sc.nextLine();
+        LocalDate startDate = LocalDate.parse(startStr);
+
+        System.out.println("Podaj datę zakończenia (rrrr-MM-dd)\n>> ");
+        String endStr = sc.nextLine();
+        LocalDate endDate = LocalDate.parse(endStr);
+
+        if (!startDate.isBefore(endDate)) {
+            System.out.println("Data rozpoczęcia musi być przed datą zakończenia.");
+            return;
+        }
+
+        for (Reservation r : reservations) {
+            if (r.getApartament().equals(apartament)) {
+                boolean overlap =
+                        startDate.isBefore(r.getEndDate()) &&
+                                r.getStartDate().isBefore(endDate);
+
+                if (overlap) {
+                    System.out.println("Wybrany termin jest już zajęty: " + r);
+                    return;
+                }
+            }
+        }
+
+        Reservation reservation = new Reservation(client, apartament, startDate, endDate);
+        reservations.add(reservation);
+        apartament.setStatus(ApartamentStatus.RESERVED);
+
+        System.out.println("Utworzono rezerwację: " + reservation);
     }
 
 }

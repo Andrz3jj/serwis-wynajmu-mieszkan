@@ -46,7 +46,8 @@ public class Main {
                     "1 -> Pokaż dostępne mieszkania\n" +
                     "2 -> Zarezerwuj mieszkanie\n" +
                     "3 -> Pokaż historię rezerwacji\n" +
-                    "4 -> Zamknij program\n"
+                    "4 -> Dodaj klienta\n" +
+                    "5 -> Zamknij program\n"
                 );
             }
 
@@ -56,7 +57,7 @@ public class Main {
             if (role == UserRole.OWNER) {
                 switch (numberOfOption) {
                     case 1 -> rentalService.showOwnerApartaments();
-                    case 2 -> System.out.println("2");
+                    case 2 -> rentalService.addApartament();
                     case 3 -> System.out.println("3");
                     case 4 -> rentalService.addOwner();
                     case 5 -> {
@@ -68,9 +69,10 @@ public class Main {
             } else {
                 switch (numberOfOption) {
                     case 1 -> rentalService.showClientApartaments();
-                    case 2 -> System.out.println("2");
+                    case 2 -> rentalService.makeReservation();
                     case 3 -> System.out.println("3");
-                    case 4 -> {
+                    case 4 -> rentalService.addClient();
+                    case 5 -> {
                         System.out.println("Zakończono działanie programu");
                         return;
                     }

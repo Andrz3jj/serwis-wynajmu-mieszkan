@@ -14,4 +14,30 @@ public class Reservation {
         this.startDate = startDate;
         this.endDate = endDate;
     }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public Apartament getApartament() {
+        return apartament;
+    }
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Reservation{" +
+                "client=" + client +
+                ", apartament=" + apartament +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                '}';
+    }
 }
