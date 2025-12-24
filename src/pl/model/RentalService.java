@@ -221,4 +221,82 @@ public class RentalService {
         System.out.println("Utworzono rezerwację: " + reservation);
     }
 
+    public void showOwnerReservations() {
+        if (owners.isEmpty()) {
+            System.out.println("Brak właścicieli.");
+            return;
+        }
+        if (reservations.isEmpty()) {
+            System.out.println("Brak rezerwacji w systemie.");
+            return;
+        }
+
+        System.out.println("Wybierz właściciela:");
+        for (int i = 0; i < owners.size(); i++) {
+            System.out.println((i + 1) + " -> " + owners.get(i));
+        }
+        System.out.print(">> ");
+        int ownerIndex = sc.nextInt();
+        sc.nextLine();
+
+        if (ownerIndex < 1 || ownerIndex > owners.size()) {
+            System.out.println("Nieprawidłowy numer właściciela.");
+            return;
+        }
+        Owner owner = owners.get(ownerIndex - 1);
+
+        boolean found = false;
+        System.out.println("Historia rezerwacji mieszkań właściciela: " + owner);
+        for (Reservation r : reservations) {
+            Apartament a = r.getApartament();
+            if (owner.getApartaments().contains(a)) {
+                System.out.println(r);
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("Żadne mieszkanie tego właściciela nie ma rezerwacji.");
+        }
+    }
+
+    public void showClientReservations() {
+        if (clients.isEmpty()) {
+            System.out.println("Brak klientów.");
+            return;
+        }
+        if (reservations.isEmpty()) {
+            System.out.println("Brak rezerwacji w systemie.");
+            return;
+        }
+
+        System.out.println("Wybierz klienta:");
+        for (int i = 0; i < clients.size(); i++) {
+            System.out.println((i + 1) + " -> " + clients.get(i));
+        }
+        System.out.print(">> ");
+        int clientIndex = sc.nextInt();
+        sc.nextLine();
+
+        if (clientIndex < 1 || clientIndex > clients.size()) {
+            System.out.println("Nieprawidłowy numer klienta.");
+            return;
+        }
+        Client client = clients.get(clientIndex - 1);
+
+        boolean found = false;
+        System.out.println("Historia rezerwacji klienta: " + client);
+        for (Reservation r : reservations) {
+            if (r.getClient().equals(client)) {
+                System.out.println(r);
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("Ten klient nie ma żadnych rezerwacji.");
+        }
+    }
+
+
 }

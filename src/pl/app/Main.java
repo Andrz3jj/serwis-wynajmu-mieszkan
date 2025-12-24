@@ -12,30 +12,6 @@ public class Main {
 
         System.out.println("Witaj w systemie wynajmu mieszkań!");
 
-//        System.out.println("Kim jestes?");
-//        System.out.printf(
-//                "1 -> Właściciel\n" +
-//                "2 -> Klient\n" +
-//                "3 -> Zamknij program\n"
-//        );
-//
-//        System.out.printf(">> ");
-//        int roleChoice = sc.nextInt();
-//
-//        UserRole role = null;
-//        if (roleChoice == 1) {
-//            role = UserRole.OWNER;
-//        } else if (roleChoice == 2) {
-//            role = UserRole.CLIENT;
-//        } else if (roleChoice == 3) {
-//            System.out.println("Zakończono działanie programu");
-//            return;
-//        }
-//        else {
-//            System.out.println("Wybrano nieprawidłową opcję");
-//            return;
-//        }
-
         while (true) {
             System.out.println("Kim jestes?");
             System.out.printf(
@@ -90,7 +66,7 @@ public class Main {
                     switch (numberOfOption) {
                         case 1 -> rentalService.showOwnerApartaments();
                         case 2 -> rentalService.addApartament();
-                        case 3 -> System.out.println("3");
+                        case 3 -> rentalService.showOwnerReservations();
                         case 4 -> rentalService.addOwner();
                         case 5 -> backToMenuRole = true;
                         default -> System.out.println("Wybrano nieprawidłową opcję");
@@ -99,7 +75,7 @@ public class Main {
                     switch (numberOfOption) {
                         case 1 -> rentalService.showClientApartaments();
                         case 2 -> rentalService.makeReservation();
-                        case 3 -> System.out.println("3");
+                        case 3 -> rentalService.showClientReservations();
                         case 4 -> rentalService.addClient();
                         case 5 ->  backToMenuRole = true;
                         default -> System.out.println("Wybrano nieprawidłową opcję");
