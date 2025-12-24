@@ -35,15 +35,15 @@ public class RentalService {
         }
         Owner owner = owners.get(ownerIndex - 1);
         
-        System.out.println("Podaj adres mieszkania\n>> ");
+        System.out.printf("Podaj adres mieszkania\n>> ");
         String address = sc.nextLine();
 
         System.out.printf(
-                "Podaj typ mieszkania: "+
-                "1 -> Pokój"+
-                "2 -> Kawalerka"+
-                "3 -> Mieszkanie 2-pokojowe"+
-                "4 -> Apartament"
+                "Podaj typ mieszkania: \n"+
+                "1 -> Pokój\n"+
+                "2 -> Kawalerka\n"+
+                "3 -> Mieszkanie 2-pokojowe\n"+
+                "4 -> Apartament\n"
         );
         int option = sc.nextInt();
 
