@@ -190,11 +190,11 @@ public class RentalService {
         }
         Apartament apartament = apartaments.get(aptIndex - 1);
 
-        System.out.println("Podaj datę rozpoczęcia (rrrr-MM-dd)\n>> ");
+        System.out.printf("Podaj datę rozpoczęcia (rrrr-MM-dd)\n>> ");
         String startStr = sc.nextLine();
         LocalDate startDate = LocalDate.parse(startStr);
 
-        System.out.println("Podaj datę zakończenia (rrrr-MM-dd)\n>> ");
+        System.out.printf("Podaj datę zakończenia (rrrr-MM-dd)\n>> ");
         String endStr = sc.nextLine();
         LocalDate endDate = LocalDate.parse(endStr);
 
@@ -205,9 +205,7 @@ public class RentalService {
 
         for (Reservation r : reservations) {
             if (r.getApartament().equals(apartament)) {
-                boolean overlap =
-                        startDate.isBefore(r.getEndDate()) &&
-                                r.getStartDate().isBefore(endDate);
+                boolean overlap = startDate.isBefore(r.getEndDate()) && r.getStartDate().isBefore(endDate);
 
                 if (overlap) {
                     System.out.println("Wybrany termin jest już zajęty: " + r);

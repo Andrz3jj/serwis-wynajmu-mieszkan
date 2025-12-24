@@ -1,11 +1,12 @@
 package src.pl.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Owner {
     private String name;
     private String surname;
-    private List<Apartament> rentalOffers;
+    private List<Apartament> rentalOffers = new ArrayList<>();
 
     public Owner(String name, String surname, List<Apartament> rentalOffers) {
         this.name = name;
