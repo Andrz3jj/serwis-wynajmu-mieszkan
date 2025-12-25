@@ -25,9 +25,6 @@ public class Apartament {
 
     @Override
     public String toString() {
-        return "Mieszkanie: " +
-                "adres: '" + address + '\'' +
-                ", typ mieszkania: " + type +
-                ", cena: " + price;
+        return address + " | " + type.getDescription() + " | " + price + " zł/miesiąc";
     }
 }

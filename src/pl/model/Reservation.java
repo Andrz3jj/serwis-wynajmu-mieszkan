@@ -33,11 +33,6 @@ public class Reservation {
 
     @Override
     public String toString() {
-        return "Reservation{" +
-                "client=" + client +
-                ", apartament=" + apartament +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
-                '}';
+        return "Rezerwacja dokonana przez: " + client + " na mieszkanie: " + apartament + " od: " + startDate + " do " + endDate;
     }
 }

@@ -6,13 +6,13 @@ public enum TypeOfApartament {
     TWOPERSONSROOM("2-osobowe mieszkanie"),
     APARTAMENT("apartament");
 
-    private String opis;
+    private String description;
 
-    TypeOfApartament(String opis) {
-        this.opis = opis;
+    TypeOfApartament(String description) {
+        this.description = description;
     }
 
-    public String getOpis() {
-        return opis;
+    public String getDescription() {
+        return description;
     }
 }

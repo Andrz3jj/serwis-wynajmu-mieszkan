@@ -22,6 +22,7 @@ public class Main {
 
             System.out.printf(">> ");
             int roleChoice = sc.nextInt();
+            System.out.println();
 
             UserRole role = null;
             if (roleChoice == 1) {
@@ -61,6 +62,7 @@ public class Main {
 
                 System.out.printf(">> ");
                 int numberOfOption = sc.nextInt();
+                System.out.println();
 
                 if (role == UserRole.OWNER) {
                     switch (numberOfOption) {

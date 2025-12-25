@@ -29,10 +29,12 @@ public class Owner {
 
     @Override
     public String toString() {
-        return "Owner{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", rentalOffers=" + rentalOffers +
-                '}';
+        if (rentalOffers.size() == 1) {
+            return name + " " + surname + " | " + rentalOffers.size() + " oferta";
+        } else if (rentalOffers.size() > 1) {
+            return name + " " + surname + " | " + rentalOffers.size() + " oferty";
+        } else {
+            return name + " " + surname + " | " + rentalOffers.size() + " ofert";
+        }
     }
 }

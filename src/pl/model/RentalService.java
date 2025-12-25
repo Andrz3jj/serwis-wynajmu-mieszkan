@@ -18,11 +18,11 @@ public class RentalService {
 
     public void addApartament() {
         if (owners.isEmpty()) {
-            System.out.println("Brak właścicieli. Najpierw dodaj właściciela.");
+            System.out.println("\nBrak właścicieli. Najpierw dodaj właściciela.\n");
             return;
         }
 
-        System.out.println("Wybierz właściciela mieszkania:");
+        System.out.println("\nWybierz właściciela mieszkania:");
         for (int i = 0; i < owners.size(); i++) {
             System.out.println((i + 1) + " -> " + owners.get(i));
         }
@@ -30,7 +30,7 @@ public class RentalService {
         int ownerIndex = sc.nextInt();
         sc.nextLine(); 
         if (ownerIndex < 1 || ownerIndex > owners.size()) {
-            System.out.println("Nieprawidłowy numer właściciela.");
+            System.out.println("\nNieprawidłowy numer właściciela.\n");
             return;
         }
         Owner owner = owners.get(ownerIndex - 1);
@@ -55,7 +55,7 @@ public class RentalService {
             case 3 -> type = TypeOfApartament.TWOPERSONSROOM;
             case 4 -> type = TypeOfApartament.APARTAMENT;
             default -> {
-                System.out.println("Nieprawidłowy typ.");
+                System.out.println("Nieprawidłowy typ.\n");
                 break;
             }
         }
@@ -66,16 +66,16 @@ public class RentalService {
         Apartament apartament = new Apartament(address, type, price);
         apartaments.add(apartament);
         owner.addApartament(apartament);
-        System.out.println("Dodano nowe mieszkanie: " + apartament);
+        System.out.println("Dodano nowe mieszkanie: " + apartament + "\n");
     }
 
     public void showOwnerApartaments() {
         if (owners.isEmpty()) {
-            System.out.println("Brak właścicieli.");
+            System.out.println("\nBrak właścicieli. Najpierw dodaj właściciela.\n");
             return;
         }
 
-        System.out.println("Wybierz właściciela:");
+        System.out.println("\nWybierz właściciela:");
         for (int i = 0; i < owners.size(); i++) {
             System.out.println((i + 1) + " -> " + owners.get(i));
         }
@@ -84,7 +84,7 @@ public class RentalService {
         sc.nextLine();
 
         if (ownerIndex < 1 || ownerIndex > owners.size()) {
-            System.out.println("Nieprawidłowy numer właściciela.");
+            System.out.println("Nieprawidłowy numer właściciela.\n");
             return;
         }
 
@@ -92,7 +92,7 @@ public class RentalService {
         List<Apartament> ownerApartaments = owner.getApartaments();
 
         if (ownerApartaments.isEmpty()) {
-            System.out.println("Ten właściciel nie ma żadnych mieszkań.");
+            System.out.println("Ten właściciel nie ma żadnych mieszkań.\n");
             return;
         }
 
@@ -100,6 +100,7 @@ public class RentalService {
         for (int i = 0; i < ownerApartaments.size(); i++) {
             System.out.println((i + 1) + " -> " + ownerApartaments.get(i));
         }
+        System.out.println();
     }
 
     public void showClientApartaments() {
@@ -113,7 +114,7 @@ public class RentalService {
         }
 
         if (!anyApartamentAvaiable) {
-            System.out.println("Brak dostępnych mieszkań");
+            System.out.println("Brak dostępnych mieszkań\n");
         }
     }
 
@@ -126,17 +127,17 @@ public class RentalService {
     }
 
     public void addOwner() {
-        System.out.printf("Podaj imię właściciela\n>> ");
+        System.out.printf("\nPodaj imię właściciela\n>> ");
         String name = sc.nextLine();
 
-        System.out.printf("Podaj nazwisko nauczyciela\n>> ");
+        System.out.printf("Podaj nazwisko właściciela\n>> ");
         String surname = sc.nextLine();
 
         Owner owner = new Owner(name, surname);
 
         owners.add(owner);
 
-        System.out.println("Dodano nowego właściciela: " + owner);
+        System.out.println("Dodano nowego właściciela: " + owner + "\n");
     }
 
     public void addClient() {
@@ -149,16 +150,16 @@ public class RentalService {
         Client client = new Client(name, surname);
         clients.add(client);
 
-        System.out.println("Dodano nowego klienta: " + client);
+        System.out.println("Dodano nowego klienta: " + client + "\n");
     }
 
     public void makeReservation() {
         if (clients.isEmpty()) {
-            System.out.println("Brak klientów. Najpierw dodaj klienta.");
+            System.out.println("Brak klientów. Najpierw dodaj klienta.\n");
             return;
         }
         if (apartaments.isEmpty()) {
-            System.out.println("Brak mieszkań do rezerwacji.");
+            System.out.println("Brak mieszkań do rezerwacji.\n");
             return;
         }
 
@@ -171,7 +172,7 @@ public class RentalService {
         sc.nextLine();
 
         if (clientIndex < 1 || clientIndex > clients.size()) {
-            System.out.println("Nieprawidłowy numer klienta.");
+            System.out.println("Nieprawidłowy numer klienta.\n");
             return;
         }
         Client client = clients.get(clientIndex - 1);
@@ -185,7 +186,7 @@ public class RentalService {
         sc.nextLine();
 
         if (aptIndex < 1 || aptIndex > apartaments.size()) {
-            System.out.println("Nieprawidłowy numer mieszkania.");
+            System.out.println("Nieprawidłowy numer mieszkania.\n");
             return;
         }
         Apartament apartament = apartaments.get(aptIndex - 1);
@@ -199,7 +200,7 @@ public class RentalService {
         LocalDate endDate = LocalDate.parse(endStr);
 
         if (!startDate.isBefore(endDate)) {
-            System.out.println("Data rozpoczęcia musi być przed datą zakończenia.");
+            System.out.println("Data rozpoczęcia musi być przed datą zakończenia.\n");
             return;
         }
 
@@ -223,15 +224,15 @@ public class RentalService {
 
     public void showOwnerReservations() {
         if (owners.isEmpty()) {
-            System.out.println("Brak właścicieli.");
+            System.out.println("\nBrak właścicieli. Najpierw dodaj właściciela.\n");
             return;
         }
         if (reservations.isEmpty()) {
-            System.out.println("Brak rezerwacji w systemie.");
+            System.out.println("\nBrak rezerwacji w systemie.\n");
             return;
         }
 
-        System.out.println("Wybierz właściciela:");
+        System.out.println("\nWybierz właściciela:");
         for (int i = 0; i < owners.size(); i++) {
             System.out.println((i + 1) + " -> " + owners.get(i));
         }
@@ -240,13 +241,13 @@ public class RentalService {
         sc.nextLine();
 
         if (ownerIndex < 1 || ownerIndex > owners.size()) {
-            System.out.println("Nieprawidłowy numer właściciela.");
+            System.out.println("\nNieprawidłowy numer właściciela.\n");
             return;
         }
         Owner owner = owners.get(ownerIndex - 1);
 
         boolean found = false;
-        System.out.println("Historia rezerwacji mieszkań właściciela: " + owner);
+        System.out.println("\nHistoria rezerwacji mieszkań właściciela: " + owner);
         for (Reservation r : reservations) {
             Apartament a = r.getApartament();
             if (owner.getApartaments().contains(a)) {
@@ -256,17 +257,17 @@ public class RentalService {
         }
 
         if (!found) {
-            System.out.println("Żadne mieszkanie tego właściciela nie ma rezerwacji.");
+            System.out.println("\nŻadne mieszkanie tego właściciela nie ma rezerwacji.\n");
         }
     }
 
     public void showClientReservations() {
         if (clients.isEmpty()) {
-            System.out.println("Brak klientów.");
+            System.out.println("Brak klientów. Najpierw dodaj klienta.\n");
             return;
         }
         if (reservations.isEmpty()) {
-            System.out.println("Brak rezerwacji w systemie.");
+            System.out.println("Brak rezerwacji w systemie.\n");
             return;
         }
 
@@ -279,7 +280,7 @@ public class RentalService {
         sc.nextLine();
 
         if (clientIndex < 1 || clientIndex > clients.size()) {
-            System.out.println("Nieprawidłowy numer klienta.");
+            System.out.println("Nieprawidłowy numer klienta.\n");
             return;
         }
         Client client = clients.get(clientIndex - 1);
@@ -294,9 +295,8 @@ public class RentalService {
         }
 
         if (!found) {
-            System.out.println("Ten klient nie ma żadnych rezerwacji.");
+            System.out.println("Ten klient nie ma żadnych rezerwacji.\n");
         }
     }
-
 
 }
