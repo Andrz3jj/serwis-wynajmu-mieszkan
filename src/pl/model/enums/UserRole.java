@@ -4,3 +4,4 @@ public enum UserRole {
     OWNER,
     CLIENT
 }
+ 

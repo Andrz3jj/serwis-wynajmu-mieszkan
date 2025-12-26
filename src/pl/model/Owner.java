@@ -3,20 +3,16 @@ package src.pl.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Owner {
-    private String name;
-    private String surname;
+public class Owner extends User {
     private List<Apartament> rentalOffers = new ArrayList<>();
 
-    public Owner(String name, String surname, List<Apartament> rentalOffers) {
-        this.name = name;
-        this.surname = surname;
-        this.rentalOffers = rentalOffers;
+    public Owner(String name, String surname) {
+        super(name, surname);
     }
 
-    public Owner(String name, String surname) {
-        this.name = name;
-        this.surname = surname;
+    public Owner(String name, String surname, List<Apartament> rentalOffers) {
+        super(name, surname);
+        this.rentalOffers = rentalOffers;
     }
 
     public void addApartament(Apartament apartament) {
