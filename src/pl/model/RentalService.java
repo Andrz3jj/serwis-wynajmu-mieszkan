@@ -275,7 +275,7 @@ public class RentalService {
         reservations.add(reservation);
         apartament.setStatus(ApartamentStatus.RESERVED);
 
-        System.out.println(reservation + "\n");
+        System.out.println(reservation);
     }
 
     public void showOwnerReservations() {

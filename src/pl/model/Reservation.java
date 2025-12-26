@@ -41,6 +41,6 @@ public class Reservation {
 
     @Override
     public String toString() {
-        return "Rezerwacja dokonana przez: " + client + ", na mieszkanie: " + apartament + ", od: " + startDate + ", do " + endDate + ", opłacono przez: " + payment.getPayment();
+        return "Rezerwacja dokonana przez: " + client + ", na mieszkanie: " + apartament + ", od: " + startDate + ", do " + endDate + ", opłacono przez: " + payment.getPayment() + "\n";
     }
 }
