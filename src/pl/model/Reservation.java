@@ -1,5 +1,7 @@
 package src.pl.model;
 
+import src.pl.model.enums.PaymentType;
+
 import java.time.LocalDate;
 
 public class Reservation {
@@ -7,12 +9,14 @@ public class Reservation {
     private Apartament apartament;
     private LocalDate startDate;
     private LocalDate endDate;
+    private PaymentType payment;
 
-    public Reservation(Client client, Apartament apartament, LocalDate startDate, LocalDate endDate) {
+    public Reservation(Client client, Apartament apartament, LocalDate startDate, LocalDate endDate, PaymentType payment) {
         this.client = client;
         this.apartament = apartament;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.payment = payment;
     }
 
     public Client getClient() {
@@ -31,8 +35,12 @@ public class Reservation {
         return endDate;
     }
 
+    public PaymentType getPayment() {
+        return payment;
+    }
+
     @Override
     public String toString() {
-        return "Rezerwacja dokonana przez: " + client + " na mieszkanie: " + apartament + " od: " + startDate + " do " + endDate;
+        return "Rezerwacja dokonana przez: " + client + ", na mieszkanie: " + apartament + ", od: " + startDate + ", do " + endDate + ", opłacono przez: " + payment.getPayment();
     }
 }

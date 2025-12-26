@@ -1,6 +1,7 @@
 package src.pl.model;
 
 import src.pl.model.enums.ApartamentStatus;
+import src.pl.model.enums.PaymentType;
 import src.pl.model.enums.TypeOfApartament;
 
 import java.util.ArrayList;
@@ -106,12 +107,15 @@ public class RentalService {
     public void showClientApartaments() {
         boolean anyApartamentAvaiable = false;
 
+
         for (Apartament a: apartaments) {
             if (a.getStatus() == ApartamentStatus.AVAILABLE) {
                 System.out.println(a);
                 anyApartamentAvaiable = true;
             }
         }
+
+        System.out.println();
 
         if (!anyApartamentAvaiable) {
             System.out.println("Brak dostępnych mieszkań\n");
@@ -127,7 +131,7 @@ public class RentalService {
     }
 
     public void addOwner() {
-        System.out.printf("\nPodaj imię właściciela\n>> ");
+        System.out.printf("Podaj imię właściciela\n>> ");
         String name = sc.nextLine();
 
         System.out.printf("Podaj nazwisko właściciela\n>> ");
@@ -143,6 +147,7 @@ public class RentalService {
     public void addClient() {
         System.out.printf("Podaj imię klienta\n>> ");
         String name = sc.nextLine();
+        sc.nextLine();
 
         System.out.printf("Podaj nazwisko klienta\n>> ");
         String surname = sc.nextLine();
@@ -204,22 +209,51 @@ public class RentalService {
             return;
         }
 
-        for (Reservation r : reservations) {
-            if (r.getApartament().equals(apartament)) {
-                boolean overlap = startDate.isBefore(r.getEndDate()) && r.getStartDate().isBefore(endDate);
+        System.out.printf(
+                "Wybierz metodę płatności:\n" +
+                "1 -> Gotówka\n" +
+                "2 -> BLIK\n" +
+                "3 -> Karta\n"
+        );
+        System.out.printf(">> ");
 
-                if (overlap) {
-                    System.out.println("Wybrany termin jest już zajęty: " + r);
+        int paymentOption = sc.nextInt();
+        sc.nextLine();
+
+        PaymentType paymentType;
+        switch (paymentOption) {
+            case 1 -> paymentType = PaymentType.CASH;
+            case 2 -> {
+                System.out.print("Podaj 6-cyfrowy kod BLIK\n>> ");
+                String blikCode = sc.nextLine();
+                if (blikCode.length() != 6) {
+                    System.out.println("BLIK musi mieć dokładnie 6 cyfr!\n");
                     return;
                 }
+                paymentType = PaymentType.BLIK;
+            }
+            case 3 -> {
+                System.out.print("Podaj 16-cyfrowy numer karty\n>> ");
+                String cardNumber = sc.nextLine();
+                if (cardNumber.length() != 16) {
+                    System.out.println("Numer karty musi mieć dokładnie 16 cyfr!\n");
+                    return;
+                }
+                paymentType = PaymentType.CARD;
+            }
+            default -> {
+                System.out.println("Nieprawidłowy typ płatności.\n");
+                return;
             }
         }
 
-        Reservation reservation = new Reservation(client, apartament, startDate, endDate);
+//        Payment payment = new Payment(apartament.getPrice(), paymentType);
+
+        Reservation reservation = new Reservation(client, apartament, startDate, endDate, paymentType);
         reservations.add(reservation);
         apartament.setStatus(ApartamentStatus.RESERVED);
 
-        System.out.println("Utworzono rezerwację: " + reservation);
+        System.out.println(reservation + "\n");
     }
 
     public void showOwnerReservations() {

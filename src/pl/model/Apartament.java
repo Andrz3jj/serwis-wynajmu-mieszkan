@@ -23,6 +23,10 @@ public class Apartament {
         this.status = status;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
     @Override
     public String toString() {
         return address + " | " + type.getDescription() + " | " + price + " zł/miesiąc";
