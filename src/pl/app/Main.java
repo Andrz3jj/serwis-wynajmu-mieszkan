@@ -71,7 +71,7 @@ public class Main {
                         case 3 -> rentalService.showOwnerReservations();
                         case 4 -> rentalService.addOwner();
                         case 5 -> backToMenuRole = true;
-                        default -> System.out.println("Wybrano nieprawidłową opcję");
+                        default -> System.out.println("Wybrano nieprawidłową opcję\n");
                     }
                 } else {
                     switch (numberOfOption) {
@@ -80,7 +80,7 @@ public class Main {
                         case 3 -> rentalService.showClientReservations();
                         case 4 -> rentalService.addClient();
                         case 5 ->  backToMenuRole = true;
-                        default -> System.out.println("Wybrano nieprawidłową opcję");
+                        default -> System.out.println("Wybrano nieprawidłową opcję\n");
                     }
                 }
             }

@@ -183,19 +183,31 @@ public class RentalService {
         }
         Client client = clients.get(clientIndex - 1);
 
+        List<Apartament> availableApartments = new ArrayList<>();
+        for (Apartament a : apartaments) {
+            if (a.getStatus() == ApartamentStatus.AVAILABLE) {
+                availableApartments.add(a);
+            }
+        }
+
+        if (availableApartments.isEmpty()) {
+            System.out.println("Brak dostępnych mieszkań do rezerwacji.\n");
+            return;
+        }
+
         System.out.println("Wybierz mieszkanie do rezerwacji:");
-        for (int i = 0; i < apartaments.size(); i++) {
-            System.out.println((i + 1) + " -> " + apartaments.get(i));
+        for (int i = 0; i < availableApartments.size(); i++) {
+            System.out.println((i + 1) + " -> " + availableApartments.get(i));
         }
         System.out.print(">> ");
         int aptIndex = sc.nextInt();
         sc.nextLine();
 
-        if (aptIndex < 1 || aptIndex > apartaments.size()) {
+        if (aptIndex < 1 || aptIndex > availableApartments.size()) {
             System.out.println("Nieprawidłowy numer mieszkania.\n");
             return;
         }
-        Apartament apartament = apartaments.get(aptIndex - 1);
+        Apartament apartament = availableApartments.get(aptIndex - 1);
 
         System.out.printf("Podaj datę rozpoczęcia (rrrr-MM-dd)\n>> ");
         String startStr = sc.nextLine();
@@ -329,7 +341,7 @@ public class RentalService {
         Client client = clients.get(clientIndex - 1);
 
         boolean found = false;
-        System.out.println("Historia rezerwacji klienta: " + client);
+        System.out.println("\nHistoria rezerwacji klienta: " + client);
         for (Reservation r : reservations) {
             if (r.getClient().equals(client)) {
                 System.out.println(r);
