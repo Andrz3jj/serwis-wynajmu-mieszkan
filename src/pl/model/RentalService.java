@@ -44,9 +44,10 @@ public class RentalService {
                 "1 -> Pokój\n"+
                 "2 -> Kawalerka\n"+
                 "3 -> Mieszkanie 2-pokojowe\n"+
-                "4 -> Apartament\n"
+                "4 -> Apartament\n>> "
         );
         int option = sc.nextInt();
+        sc.nextLine();
 
         TypeOfApartament type = null;
 
@@ -63,6 +64,7 @@ public class RentalService {
 
         System.out.printf("Podaj cenę za miesiąc\n>> ");
         double price = sc.nextInt();
+        sc.nextLine();
 
         Apartament apartament = new Apartament(address, type, price);
         apartaments.add(apartament);
@@ -147,7 +149,6 @@ public class RentalService {
     public void addClient() {
         System.out.printf("Podaj imię klienta\n>> ");
         String name = sc.nextLine();
-        sc.nextLine();
 
         System.out.printf("Podaj nazwisko klienta\n>> ");
         String surname = sc.nextLine();
@@ -209,6 +210,16 @@ public class RentalService {
             return;
         }
 
+        for (Reservation r : reservations) {
+            if (r.getApartament().equals(apartament)) {
+                boolean overlap = startDate.isBefore(r.getEndDate()) && r.getStartDate().isBefore(endDate);
+                if (overlap) {
+                    System.out.println("Termin zajęty!\n");
+                    return;
+                }
+            }
+        }
+
         System.out.printf(
                 "Wybierz metodę płatności:\n" +
                 "1 -> Gotówka\n" +
@@ -247,8 +258,6 @@ public class RentalService {
             }
         }
 
-//        Payment payment = new Payment(apartament.getPrice(), paymentType);
-
         Reservation reservation = new Reservation(client, apartament, startDate, endDate, paymentType);
         reservations.add(reservation);
         apartament.setStatus(ApartamentStatus.RESERVED);
@@ -258,11 +267,11 @@ public class RentalService {
 
     public void showOwnerReservations() {
         if (owners.isEmpty()) {
-            System.out.println("\nBrak właścicieli. Najpierw dodaj właściciela.\n");
+            System.out.println("Brak właścicieli. Najpierw dodaj właściciela.\n");
             return;
         }
         if (reservations.isEmpty()) {
-            System.out.println("\nBrak rezerwacji w systemie.\n");
+            System.out.println("Brak rezerwacji w systemie.\n");
             return;
         }
 
