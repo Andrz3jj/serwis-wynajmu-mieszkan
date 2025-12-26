@@ -13,6 +13,7 @@ public class Main {
         System.out.println("Witaj w systemie wynajmu mieszkań!");
 
         while (true) {
+            System.out.println();
             System.out.println("Kim jestes?");
             System.out.printf(
                     "1 -> Właściciel\n" +
@@ -62,7 +63,6 @@ public class Main {
 
                 System.out.printf(">> ");
                 int numberOfOption = sc.nextInt();
-                System.out.println();
 
                 if (role == UserRole.OWNER) {
                     switch (numberOfOption) {

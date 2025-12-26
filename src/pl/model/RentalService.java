@@ -109,7 +109,8 @@ public class RentalService {
     public void showClientApartaments() {
         boolean anyApartamentAvaiable = false;
 
-
+        System.out.println();
+        System.out.println("Dostępne mieszkania do wynajęcia:");
         for (Apartament a: apartaments) {
             if (a.getStatus() == ApartamentStatus.AVAILABLE) {
                 System.out.println(a);
@@ -133,7 +134,7 @@ public class RentalService {
     }
 
     public void addOwner() {
-        System.out.printf("Podaj imię właściciela\n>> ");
+        System.out.printf("\nPodaj imię właściciela\n>> ");
         String name = sc.nextLine();
 
         System.out.printf("Podaj nazwisko właściciela\n>> ");
@@ -147,7 +148,7 @@ public class RentalService {
     }
 
     public void addClient() {
-        System.out.printf("Podaj imię klienta\n>> ");
+        System.out.printf("\nPodaj imię klienta\n>> ");
         String name = sc.nextLine();
 
         System.out.printf("Podaj nazwisko klienta\n>> ");
@@ -161,15 +162,15 @@ public class RentalService {
 
     public void makeReservation() {
         if (clients.isEmpty()) {
-            System.out.println("Brak klientów. Najpierw dodaj klienta.\n");
+            System.out.println("\nBrak klientów. Najpierw dodaj klienta.\n");
             return;
         }
         if (apartaments.isEmpty()) {
-            System.out.println("Brak mieszkań do rezerwacji.\n");
+            System.out.println("\nBrak mieszkań do rezerwacji.\n");
             return;
         }
 
-        System.out.println("Wybierz klienta:");
+        System.out.println("\nWybierz klienta:");
         for (int i = 0; i < clients.size(); i++) {
             System.out.println((i + 1) + " -> " + clients.get(i));
         }
@@ -279,11 +280,11 @@ public class RentalService {
 
     public void showOwnerReservations() {
         if (owners.isEmpty()) {
-            System.out.println("Brak właścicieli. Najpierw dodaj właściciela.\n");
+            System.out.printf("\nBrak właścicieli. Najpierw dodaj właściciela.\n\n");
             return;
         }
         if (reservations.isEmpty()) {
-            System.out.println("Brak rezerwacji w systemie.\n");
+            System.out.printf("\nBrak rezerwacji w systemie.\n\n");
             return;
         }
 
@@ -318,15 +319,15 @@ public class RentalService {
 
     public void showClientReservations() {
         if (clients.isEmpty()) {
-            System.out.println("Brak klientów. Najpierw dodaj klienta.\n");
+            System.out.println("\nBrak klientów. Najpierw dodaj klienta.\n");
             return;
         }
         if (reservations.isEmpty()) {
-            System.out.println("Brak rezerwacji w systemie.\n");
+            System.out.println("\nBrak rezerwacji w systemie.\n");
             return;
         }
 
-        System.out.println("Wybierz klienta:");
+        System.out.println("\nWybierz klienta:");
         for (int i = 0; i < clients.size(); i++) {
             System.out.println((i + 1) + " -> " + clients.get(i));
         }
