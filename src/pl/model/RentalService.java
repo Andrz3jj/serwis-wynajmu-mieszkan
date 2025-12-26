@@ -17,6 +17,63 @@ public class RentalService {
     private List<Owner> owners = new ArrayList<>();
     private List<Client> clients = new ArrayList<>();
 
+    public RentalService() {
+        initSampleData();
+    }
+
+    public void initSampleData() {
+        Owner o1 = new Owner("Jan", "Kowalski");
+        Owner o2 = new Owner("Anna", "Nowak");
+        Owner o3 = new Owner("Piotr", "Wiśniewski");
+
+        owners.add(o1);
+        owners.add(o2);
+        owners.add(o3);
+
+        Client c1 = new Client("Kasia", "Kowal");
+        Client c2 = new Client("Marek", "Zieliński");
+        Client c3 = new Client("Ola", "Mazur");
+        Client c4 = new Client("Tomek", "Krawczyk");
+
+        clients.add(c1);
+        clients.add(c2);
+        clients.add(c3);
+        clients.add(c4);
+
+        Apartament a1 = new Apartament("Warszawa, ul. A 1", TypeOfApartament.ROOM, 2000);
+        Apartament a2 = new Apartament("Warszawa, ul. B 2", TypeOfApartament.STUDIOAPARTAMENT, 2500);
+        Apartament a3 = new Apartament("Warszawa, ul. C 3", TypeOfApartament.TWOPERSONSROOM, 3000);
+        Apartament a4 = new Apartament("Kraków, ul. D 4", TypeOfApartament.APARTAMENT, 4000);
+        Apartament a5 = new Apartament("Kraków, ul. E 5", TypeOfApartament.ROOM, 1800);
+        Apartament a6 = new Apartament("Gdańsk, ul. F 6", TypeOfApartament.STUDIOAPARTAMENT, 2300);
+        Apartament a7 = new Apartament("Gdańsk, ul. G 7", TypeOfApartament.APARTAMENT, 4200);
+        Apartament a8 = new Apartament("Poznań, ul. H 8", TypeOfApartament.TWOPERSONSROOM, 3100);
+
+        apartaments.add(a1); o1.addApartament(a1);
+        apartaments.add(a2); o1.addApartament(a2);
+        apartaments.add(a3); o2.addApartament(a3);
+        apartaments.add(a4); o2.addApartament(a4);
+        apartaments.add(a5); o3.addApartament(a5);
+        apartaments.add(a6); o3.addApartament(a6);
+        apartaments.add(a7); o3.addApartament(a7);
+        apartaments.add(a8); o2.addApartament(a8);
+
+        Reservation r1 = new Reservation(c1, a1, LocalDate.now(), LocalDate.now().plusMonths(3), PaymentType.CASH);
+        Reservation r2 = new Reservation(c2, a2, LocalDate.now().plusDays(1), LocalDate.now().plusMonths(2), PaymentType.CARD);
+        Reservation r3 = new Reservation(c3, a3, LocalDate.now().plusDays(5), LocalDate.now().plusMonths(1), PaymentType.BLIK);
+        Reservation r4 = new Reservation(c4, a4, LocalDate.now().plusDays(10), LocalDate.now().plusMonths(6), PaymentType.CASH);
+
+        reservations.add(r1);
+        reservations.add(r2);
+        reservations.add(r3);
+        reservations.add(r4);
+
+        a1.setStatus(ApartamentStatus.RESERVED);
+        a2.setStatus(ApartamentStatus.RESERVED);
+        a3.setStatus(ApartamentStatus.RESERVED);
+        a4.setStatus(ApartamentStatus.RESERVED);
+    }
+
     public void addApartament() {
         if (owners.isEmpty()) {
             System.out.println("\nBrak właścicieli. Najpierw dodaj właściciela.\n");
