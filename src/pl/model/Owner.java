@@ -20,12 +20,14 @@ public class Owner extends User {
 
     @Override
     public String toString() {
+        String fullName = getName() + " " + getSurname();
+
         if (rentalOffers.size() == 1) {
-            return name + " " + surname + " | " + rentalOffers.size() + " oferta";
+            return fullName + " | " + rentalOffers.size() + " oferta";
         } else if (rentalOffers.size() > 1) {
-            return name + " " + surname + " | " + rentalOffers.size() + " oferty";
+            return fullName + " | " + rentalOffers.size() + " oferty";
         } else {
-            return name + " " + surname + " | " + rentalOffers.size() + " ofert";
+            return fullName + " | " + rentalOffers.size() + " ofert";
         }
     }
 }
