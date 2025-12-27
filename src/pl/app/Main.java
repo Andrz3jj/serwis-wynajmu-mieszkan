@@ -45,19 +45,21 @@ public class Main {
                 System.out.println("Wybierz jedną z opcji: ");
                 if (role == UserRole.OWNER) {
                     System.out.printf(
-                            "1 -> Pokaż swoje mieszkania\n" +
+                            "1 -> Pokaż swoje ofery wynajmu\n" +
                             "2 -> Dodaj ofertę wynajmu\n" +
                             "3 -> Pokaż historię rezerwacji\n" +
                             "4 -> Dodaj właściciela\n" +
-                            "5 -> Powrót do wyboru roli\n"
+                            "5 -> Usuń ofertę wynajmu\n"+
+                            "6 -> Powrót do wyboru roli\n"
                     );
                 } else {
                     System.out.printf(
-                            "1 -> Pokaż dostępne mieszkania\n" +
+                            "1 -> Pokaż dostępne mieszkania do wynajęcia\n" +
                             "2 -> Zarezerwuj mieszkanie\n" +
                             "3 -> Pokaż historię rezerwacji\n" +
                             "4 -> Dodaj klienta\n" +
-                            "5 -> Powrót do wyboru roli\n"
+                            "5 -> Wyszukaj mieszkanie po cenie\n" +
+                            "6 -> Powrót do wyboru roli\n"
                     );
                 }
 
@@ -70,7 +72,8 @@ public class Main {
                         case 2 -> rentalService.addApartament();
                         case 3 -> rentalService.showOwnerReservations();
                         case 4 -> rentalService.addOwner();
-                        case 5 -> backToMenuRole = true;
+                        case 5 -> rentalService.removeOwnerApartament();
+                        case 6 -> backToMenuRole = true;
                         default -> System.out.println("Wybrano nieprawidłową opcję\n");
                     }
                 } else {
@@ -79,7 +82,8 @@ public class Main {
                         case 2 -> rentalService.makeReservation();
                         case 3 -> rentalService.showClientReservations();
                         case 4 -> rentalService.addClient();
-                        case 5 ->  backToMenuRole = true;
+                        case 5 -> rentalService.searchApartamentsByPrice();
+                        case 6 ->  backToMenuRole = true;
                         default -> System.out.println("Wybrano nieprawidłową opcję\n");
                     }
                 }

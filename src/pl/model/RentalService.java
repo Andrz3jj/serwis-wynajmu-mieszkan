@@ -399,7 +399,7 @@ public class RentalService {
         Client client = clients.get(clientIndex - 1);
 
         boolean found = false;
-        System.out.println("\nHistoria rezerwacji klienta: " + client);
+        System.out.println("\nHistoria rezerwacji klienta: ");
         for (Reservation r : reservations) {
             if (r.getClient().equals(client)) {
                 System.out.println(r);
@@ -410,6 +410,35 @@ public class RentalService {
         if (!found) {
             System.out.println("Ten klient nie ma żadnych rezerwacji.\n");
         }
+    }
+
+    public void searchApartamentsByPrice() {
+        System.out.print("\nPodaj cenę minimalną\n>> ");
+        double minPrice = sc.nextDouble();
+
+        System.out.print("Podaj cenę maksymalną\n>> ");
+        double maxPrice = sc.nextDouble();
+        sc.nextLine();
+
+        boolean found = false;
+
+        System.out.println("\nMieszkania w podanym zakresie cenowym:");
+        for (Apartament a : apartaments) {
+            if (a.getPrice() >= minPrice && a.getPrice() <= maxPrice) {
+                System.out.println(a);
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("Brak.\n");
+        } else {
+            System.out.println();
+        }
+    }
+
+    public void removeOwnerApartament() {
+
     }
 
 }
