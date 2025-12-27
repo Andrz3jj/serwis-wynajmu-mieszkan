@@ -528,5 +528,4 @@ public class RentalService {
 
         System.out.println("Mieszkanie zostało usunięte.\n");
     }
-
 }
