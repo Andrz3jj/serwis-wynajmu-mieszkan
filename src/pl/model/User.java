@@ -16,4 +16,9 @@ public abstract class User {
     public String getSurname() {
         return surname;
     }
+
+    @Override
+    public String toString() {
+        return name + " " + surname;
+    }
 }
