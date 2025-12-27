@@ -135,11 +135,17 @@ public class RentalService {
             }
         }
 
-        System.out.printf("Podaj cenę za miesiąc\n>> ");
+        System.out.printf("Podaj cenę za miesiąc (Wpisz 0 jeśli chcesz użyc ceny domyślnej)\n>> ");
         double price = sc.nextInt();
         sc.nextLine();
 
-        Apartament apartament = new Apartament(address, type, price);
+        Apartament apartament;
+        if (price == 0) {
+            apartament = new Apartament(address, type);
+        } else {
+           apartament = new Apartament(address, type, price);
+        }
+
         apartaments.add(apartament);
         owner.addApartament(apartament);
         System.out.println("Dodano nowe mieszkanie: " + apartament + "\n");

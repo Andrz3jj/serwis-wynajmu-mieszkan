@@ -15,6 +15,10 @@ public class Apartament {
         this.price = price;
     }
 
+    public Apartament(String address, TypeOfApartament type) {
+        this(address, type, 2000);
+    }
+
     public ApartamentStatus getStatus() {
         return status;
     }

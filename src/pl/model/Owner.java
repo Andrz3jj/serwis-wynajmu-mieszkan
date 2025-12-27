@@ -10,11 +10,6 @@ public class Owner extends User {
         super(name, surname);
     }
 
-    public Owner(String name, String surname, List<Apartament> rentalOffers) {
-        super(name, surname);
-        this.rentalOffers = rentalOffers;
-    }
-
     public void addApartament(Apartament apartament) {
         rentalOffers.add(apartament);
     }
