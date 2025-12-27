@@ -1,5 +1,7 @@
 package src.pl.model;
 
+import src.pl.model.enums.ApartamentStatus;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,14 +22,18 @@ public class Owner extends User {
 
     @Override
     public String toString() {
-        String fullName = getName() + " " + getSurname();
+        int available = 0;
+        int reserved = 0;
 
-        if (rentalOffers.size() == 1) {
-            return fullName + " | " + rentalOffers.size() + " oferta";
-        } else if (rentalOffers.size() > 1) {
-            return fullName + " | " + rentalOffers.size() + " oferty";
-        } else {
-            return fullName + " | " + rentalOffers.size() + " ofert";
+        for (Apartament a : rentalOffers) {
+            if (a.getStatus() == ApartamentStatus.AVAILABLE) {
+                available++;
+            } else if (a.getStatus() == ApartamentStatus.RESERVED) {
+                reserved++;
+            }
         }
+
+        String fullName = getName() + " " + getSurname();
+        return fullName + " | oferty: " + reserved + " zarezerwowane / " + available + " dostępne";
     }
 }

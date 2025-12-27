@@ -5,6 +5,8 @@ import src.pl.model.enums.PaymentType;
 import java.time.LocalDate;
 
 public class Reservation {
+    private static int counter = 0;
+    private int id;
     private Client client;
     private Apartament apartament;
     private LocalDate startDate;
@@ -17,6 +19,7 @@ public class Reservation {
         this.startDate = startDate;
         this.endDate = endDate;
         this.payment = payment;
+        this.id = ++counter;
     }
 
     public Client getClient() {
@@ -41,6 +44,6 @@ public class Reservation {
 
     @Override
     public String toString() {
-        return "Rezerwacja dokonana przez: " + client + ", na mieszkanie: " + apartament + ", od: " + startDate + ", do " + endDate + ", opłacono przez: " + payment.getPayment() + "\n";
+        return "Rezerwacja o id " + id + " dokonana przez: " + client + ", na mieszkanie: " + apartament + ", od: " + startDate + ", do " + endDate + ", opłacono przez: " + payment.getPayment();
     }
 }

@@ -56,17 +56,28 @@ public class RentalService {
         Apartament a10 = new Apartament("Łódź, ul. J 10", TypeOfApartament.STUDIOAPARTAMENT,2200);
         Apartament a11 = new Apartament("Wrocław, ul. K 11", TypeOfApartament.APARTAMENT,  4500);
 
-        apartaments.add(a1); o1.addApartament(a1);
-        apartaments.add(a2); o1.addApartament(a2);
-        apartaments.add(a3); o2.addApartament(a3);
-        apartaments.add(a4); o2.addApartament(a4);
-        apartaments.add(a5); o3.addApartament(a5);
-        apartaments.add(a6); o3.addApartament(a6);
-        apartaments.add(a7); o3.addApartament(a7);
-        apartaments.add(a8); o2.addApartament(a8);
-        apartaments.add(a9);  o1.addApartament(a9);
-        apartaments.add(a10); o2.addApartament(a10);
-        apartaments.add(a11); o3.addApartament(a11);
+        apartaments.add(a1);
+        o1.addApartament(a1);
+        apartaments.add(a2);
+        o1.addApartament(a2);
+        apartaments.add(a3);
+        o2.addApartament(a3);
+        apartaments.add(a4);
+        o2.addApartament(a4);
+        apartaments.add(a5);
+        o3.addApartament(a5);
+        apartaments.add(a6);
+        o3.addApartament(a6);
+        apartaments.add(a7);
+        o3.addApartament(a7);
+        apartaments.add(a8);
+        o2.addApartament(a8);
+        apartaments.add(a9);
+        o1.addApartament(a9);
+        apartaments.add(a10);
+        o2.addApartament(a10);
+        apartaments.add(a11);
+        o3.addApartament(a11);
 
         Reservation r1 = new Reservation(c1, a1, LocalDate.now(), LocalDate.now().plusMonths(3), PaymentType.CASH);
         Reservation r2 = new Reservation(c2, a2, LocalDate.now().plusDays(1), LocalDate.now().plusMonths(2), PaymentType.CARD);
@@ -393,6 +404,8 @@ public class RentalService {
 
         if (!found) {
             System.out.println("\nŻadne mieszkanie tego właściciela nie ma rezerwacji.\n");
+        } else {
+            System.out.println();
         }
     }
 
@@ -431,6 +444,8 @@ public class RentalService {
 
         if (!found) {
             System.out.println("Ten klient nie ma żadnych rezerwacji.\n");
+        } else {
+            System.out.println();
         }
     }
 
