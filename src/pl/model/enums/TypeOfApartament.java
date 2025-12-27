@@ -6,7 +6,7 @@ public enum TypeOfApartament {
     TWOPERSONSROOM("2-osobowe mieszkanie"),
     APARTAMENT("apartament");
 
-    private String description;
+    private String description; 
 
     TypeOfApartament(String description) {
         this.description = description;

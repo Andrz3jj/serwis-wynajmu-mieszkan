@@ -438,7 +438,58 @@ public class RentalService {
     }
 
     public void removeOwnerApartament() {
+        if (owners.isEmpty()) {
+            System.out.println("\nBrak właścicieli.\n");
+            return;
+        }
 
+        System.out.println("\nWybierz właściciela:");
+        for (int i = 0; i < owners.size(); i++) {
+            System.out.println((i + 1) + " -> " + owners.get(i));
+        }
+        System.out.print(">> ");
+        int ownerIndex = sc.nextInt();
+        sc.nextLine();
+
+        if (ownerIndex < 1 || ownerIndex > owners.size()) {
+            System.out.println("Nieprawidłowy numer właściciela.\n");
+            return;
+        }
+
+        Owner owner = owners.get(ownerIndex - 1);
+        List<Apartament> ownerApartaments = owner.getApartaments();
+
+        if (ownerApartaments.isEmpty()) {
+            System.out.println("Ten właściciel nie ma mieszkań.\n");
+            return;
+        }
+
+        System.out.println("\nWybierz mieszkanie do usunięcia:");
+        for (int i = 0; i < ownerApartaments.size(); i++) {
+            System.out.println((i + 1) + " -> " + ownerApartaments.get(i));
+        }
+        System.out.print(">> ");
+        int aptIndex = sc.nextInt();
+        sc.nextLine();
+
+        if (aptIndex < 1 || aptIndex > ownerApartaments.size()) {
+            System.out.println("Nieprawidłowy numer mieszkania.\n");
+            return;
+        }
+
+        Apartament apartament = ownerApartaments.get(aptIndex - 1);
+
+        for (Reservation r : reservations) {
+            if (r.getApartament().equals(apartament)) {
+                System.out.println("Nie można usunąć mieszkania – ma rezerwacje.\n");
+                return;
+            }
+        }
+
+        ownerApartaments.remove(apartament);
+        apartaments.remove(apartament);
+
+        System.out.println("Mieszkanie zostało usunięte.\n");
     }
 
 }
