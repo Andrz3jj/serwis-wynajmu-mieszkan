@@ -34,7 +34,11 @@ public class RentalService {
         Client c2 = new Client("Marek", "Zieliński");
         Client c3 = new Client("Ola", "Mazur");
         Client c4 = new Client("Tomek", "Krawczyk");
+        Client c5 = new Client("Ewa", "Nowicka");
+        Client c6 = new Client("Bartek", "Lewandowski");
 
+        clients.add(c5);
+        clients.add(c6);
         clients.add(c1);
         clients.add(c2);
         clients.add(c3);
@@ -48,6 +52,9 @@ public class RentalService {
         Apartament a6 = new Apartament("Gdańsk, ul. F 6", TypeOfApartament.STUDIOAPARTAMENT, 2300);
         Apartament a7 = new Apartament("Gdańsk, ul. G 7", TypeOfApartament.APARTAMENT, 4200);
         Apartament a8 = new Apartament("Poznań, ul. H 8", TypeOfApartament.TWOPERSONSROOM, 3100);
+        Apartament a9  = new Apartament("Łódź, ul. I 9",  TypeOfApartament.ROOM,            1900);
+        Apartament a10 = new Apartament("Łódź, ul. J 10", TypeOfApartament.STUDIOAPARTAMENT,2200);
+        Apartament a11 = new Apartament("Wrocław, ul. K 11", TypeOfApartament.APARTAMENT,  4500);
 
         apartaments.add(a1); o1.addApartament(a1);
         apartaments.add(a2); o1.addApartament(a2);
@@ -57,21 +64,30 @@ public class RentalService {
         apartaments.add(a6); o3.addApartament(a6);
         apartaments.add(a7); o3.addApartament(a7);
         apartaments.add(a8); o2.addApartament(a8);
+        apartaments.add(a9);  o1.addApartament(a9);
+        apartaments.add(a10); o2.addApartament(a10);
+        apartaments.add(a11); o3.addApartament(a11);
 
         Reservation r1 = new Reservation(c1, a1, LocalDate.now(), LocalDate.now().plusMonths(3), PaymentType.CASH);
         Reservation r2 = new Reservation(c2, a2, LocalDate.now().plusDays(1), LocalDate.now().plusMonths(2), PaymentType.CARD);
         Reservation r3 = new Reservation(c3, a3, LocalDate.now().plusDays(5), LocalDate.now().plusMonths(1), PaymentType.BLIK);
         Reservation r4 = new Reservation(c4, a4, LocalDate.now().plusDays(10), LocalDate.now().plusMonths(6), PaymentType.CASH);
+        Reservation r5 = new Reservation(c5, a5, LocalDate.now().plusDays(2), LocalDate.now().plusMonths(2), PaymentType.CARD);
+        Reservation r6 = new Reservation(c6, a6, LocalDate.now().plusDays(7), LocalDate.now().plusMonths(1), PaymentType.BLIK);
 
         reservations.add(r1);
         reservations.add(r2);
         reservations.add(r3);
         reservations.add(r4);
+        reservations.add(r5);
+        reservations.add(r6);
 
         a1.setStatus(ApartamentStatus.RESERVED);
         a2.setStatus(ApartamentStatus.RESERVED);
         a3.setStatus(ApartamentStatus.RESERVED);
         a4.setStatus(ApartamentStatus.RESERVED);
+        a5.setStatus(ApartamentStatus.RESERVED);
+        a6.setStatus(ApartamentStatus.RESERVED);
     }
 
     public void addApartament() {
