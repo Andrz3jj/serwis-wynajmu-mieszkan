@@ -58,3 +58,6 @@ System nie posiada mechanizmu logowania, ale użytkownicy są wybierani z listy 
 3. Uruchom klasę `Main`,
 4. Postępuj zgodnie z instrukcjami w konsoli
 
+## Autor
+- Andrzej Bajcarczyk
+
