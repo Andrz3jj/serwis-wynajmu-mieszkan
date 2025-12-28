@@ -54,6 +54,7 @@ System nie posiada mechanizmu logowania, ale użytkownicy są wybierani z listy 
 
 ## Instrukcja uruchomienia
 1. Sklonuj repozytorium,
-2. Otwórz projekt w IDE (np. IntelliJ, Eclipse),
+2. Otwórz projekt w IDE,
 3. Uruchom klasę `Main`,
 4. Postępuj zgodnie z instrukcjami w konsoli
+
