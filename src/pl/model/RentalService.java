@@ -142,13 +142,18 @@ public class RentalService {
             case 4 -> type = TypeOfApartament.APARTAMENT;
             default -> {
                 System.out.println("Nieprawidłowy typ.\n");
-                break;
+                return;
             }
         }
 
         System.out.printf("Podaj cenę za miesiąc (Wpisz 0 jeśli chcesz użyc ceny domyślnej)\n>> ");
         double price = sc.nextInt();
         sc.nextLine();
+
+        if (price < 0) {
+            System.out.println("Cena nie może być ujemna.\n");
+            return;
+        }
 
         Apartament apartament;
         if (price == 0) {

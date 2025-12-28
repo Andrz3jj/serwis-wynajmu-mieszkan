@@ -14,7 +14,7 @@ public class Main {
 
         while (true) {
             System.out.println();
-            System.out.println("Kim jestes?");
+            System.out.println("Kim jestes? (Wpisz liczbę)");
             System.out.printf(
                     "1 -> Właściciel\n" +
                     "2 -> Klient\n" +
